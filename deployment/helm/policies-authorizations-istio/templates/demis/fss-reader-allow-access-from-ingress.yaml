@@ -55,6 +55,8 @@ spec:
     when:
       - key: request.auth.claims[realm_access][roles]
         values: [
+          "proof-of-pathogen-notification-excerpt-fetcher",
+          "proof-of-disease-notification-excerpt-fetcher",
           "disease-notification-fetcher",
           "disease-notification-nonnominal-fetcher",
           "pathogen-notification-fetcher",

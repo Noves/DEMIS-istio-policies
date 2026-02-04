@@ -1,4 +1,4 @@
-{{- if (eq .Values.rabbitmq.enabled true) }}
+{{- if (eq .Values.dmz.rabbitmq.enabled true) }}
 {{/* Allows the Cluster Services to access RabbitMq */}}
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy

@@ -3,7 +3,7 @@
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
-  name: rabbit-mq-allow-access-from-bulk-inbound
+  name: rabbit-mq-allow-access-from-secure-message-gateway
   labels:
     component: rabbitmq
 spec:
@@ -15,7 +15,7 @@ spec:
   - from:
     - source:
         principals: [
-          "cluster.local/ns/{{ .Release.Namespace }}/sa/bulk-inbound-service*"
+          "cluster.local/ns/{{ .Release.Namespace }}/sa/secure-message-gateway*"
         ]
     to:
     - operation:

@@ -73,7 +73,24 @@ demis:
     arsEnabled: false
   # if active, deploys authorization policy for destination-lookup-service
   dls:
+    internal:
+      enabled: false
+    external:
+      enabled: false
+
+dmz:
+  enabled: false
+  namespace: "dmz"
+  local:
+    # If active, allows Prometheus to access the services metrics
+    prometheusMetrics:
+      enabled: false
+  rabbitmq:
+    # If active, allows the DMZ services to access RabbitMQ and allows clustering
     enabled: false
+  # Feature Flags for DMZ Services
+  featureFlags:
+    arsBulkEnabled: false
 
 # Mesh Services Policies
 mesh:

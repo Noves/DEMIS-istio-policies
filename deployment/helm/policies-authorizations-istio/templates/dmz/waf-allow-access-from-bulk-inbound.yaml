@@ -3,13 +3,13 @@
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
-  name: rabbit-mq-allow-access-from-bulk-inbound
+  name: waf-allow-access-from-bulk-inbound
   labels:
-    component: rabbitmq
+    component: waf-service
 spec:
   selector:
     matchLabels:
-      app: rabbitmq
+      app: waf-service
   action: ALLOW
   rules:
   - from:
@@ -19,5 +19,5 @@ spec:
         ]
     to:
     - operation:
-        ports: ["5672"]
+        ports: ["8080"]
 {{- end }}
