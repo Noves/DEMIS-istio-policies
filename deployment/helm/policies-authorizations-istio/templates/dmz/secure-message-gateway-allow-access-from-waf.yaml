@@ -3,21 +3,21 @@
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
-  name: rabbit-mq-allow-access-from-bulk-inbound
+  name: secure-message-gateway-allow-access-from-waf
   labels:
-    component: rabbitmq
+    component: secure-message-gateway
 spec:
   selector:
     matchLabels:
-      app: rabbitmq
+      app: secure-message-gateway
   action: ALLOW
   rules:
   - from:
     - source:
         principals: [
-          "cluster.local/ns/{{ .Release.Namespace }}/sa/bulk-inbound-service*"
+          "cluster.local/ns/{{ .Release.Namespace }}/sa/waf-service*"
         ]
     to:
     - operation:
-        ports: ["5672"]
+        ports: ["8080"]
 {{- end }}

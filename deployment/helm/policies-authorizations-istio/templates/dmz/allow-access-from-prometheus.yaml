@@ -1,0 +1,21 @@
+{{- if and (eq .Values.dmz.enabled true) (eq .Values.dmz.local.prometheusMetrics.enabled true) }}
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: dmz-allow-prometheus-to-services
+  labels:
+    component: monitoring
+spec:
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            principals:
+              - cluster.local/ns/istio-system/sa/prometheus
+      to:
+        - operation:
+            methods:
+              - GET
+            paths:
+              - /actuator/prometheus*
+{{- end }}
