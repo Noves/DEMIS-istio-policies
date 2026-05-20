@@ -1,0 +1,23 @@
+{{- if eq .Values.demis.enabled true }}
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: package-registry-allow-access-from-are
+  labels:
+    component: demis
+spec:
+  selector:
+    matchLabels:
+      app: package-registry
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals: [
+          "cluster.local/ns/{{ .Values.are.namespace }}/sa/validation-service-are*"
+        ]
+    to:
+    - operation:
+        methods: ["GET"]
+        paths: []
+{{- end }}
