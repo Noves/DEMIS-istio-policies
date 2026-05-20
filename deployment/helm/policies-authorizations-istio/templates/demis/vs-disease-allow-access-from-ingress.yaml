@@ -1,14 +1,14 @@
-{{- if and (eq .Values.demis.enabled true) (eq .Values.demis.validation.allowExternalAccess true) (eq .Values.demis.validation.split false) }}
+{{- if and (eq .Values.demis.enabled true) (eq .Values.demis.validation.allowExternalAccess true) (eq .Values.demis.validation.split true) }}
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
-  name: vs-core-allow-access-from-ingress
+  name: vs-disease-allow-access-from-ingress
   labels:
     component: demis
 spec:
   selector:
     matchLabels:
-      app: validation-service-core
+      app: validation-service-disease
   action: ALLOW
   rules:
     - from:

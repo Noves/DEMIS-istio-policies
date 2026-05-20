@@ -1,6 +1,13 @@
 <img align="right" width="250" height="47" src="https://raw.githubusercontent.com/gematik/gematik.github.io/master/Gematik_Logo_Flag_With_Background.png" /> <br />   
  
 # Release notes Istio-Policies
+## Release 2.11.0
+- added are allow-access for validation service delegation
+- added policies for validation service are to access package registry
+- added policies for validation service split
+- deleted Authorization Policy keycloak-allow-access-from-demis
+- enabled check for are-notficiation-sender role in ARE-Gateway policy
+
 ## Release 2.10.1
 - making are Namespace in demis configurable
 - fixed namespace settings for are policies in idm
