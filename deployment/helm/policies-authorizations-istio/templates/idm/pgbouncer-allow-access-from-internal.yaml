@@ -1,4 +1,4 @@
-{{- if and (eq .Values.idm.enabled true) (eq .Values.pgbouncer.enabled true) (eq .Values.tcp.principals.enabled true)}}
+{{- if eq .Values.idm.enabled true }}
 {{/* Allows the Cluster Services to access PgBouncer */}}
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy

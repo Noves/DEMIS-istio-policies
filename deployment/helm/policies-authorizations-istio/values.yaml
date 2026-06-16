@@ -9,15 +9,6 @@ postgres:
 rabbitmq:
   enabled: false
 
-# If active, allow the services to access PGBouncer
-pgbouncer:
-  enabled: true
-
-# Switches Auth Policies for TCP Services to principals instead of IPs
-tcp:
-  principals:
-    enabled: false
-
 # Identity Managements (IDM) Policies
 idm:
   enabled: true
