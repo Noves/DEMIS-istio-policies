@@ -1,4 +1,4 @@
-{{- if and (eq .Values.demis.enabled true) (eq .Values.pgbouncer.enabled true) (eq .Values.tcp.principals.enabled true)}}
+{{- if eq .Values.demis.enabled true}}
 {{/* Allows the Cluster Services to access PgBouncer */}}
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
@@ -22,6 +22,7 @@ spec:
           - "cluster.local/ns/{{ .Release.Namespace }}/sa/surveillance-pseudonym-service*"
           - "cluster.local/ns/{{ .Release.Namespace }}/sa/surveillance-pseudonym-purger*"
           - "cluster.local/ns/{{ .Release.Namespace }}/sa/ars-service*"
+          - "cluster.local/ns/{{ .Release.Namespace }}/sa/ars-purger*"
           - "cluster.local/ns/{{ .Release.Namespace }}/sa/destination-lookup-writer*"
           - "cluster.local/ns/{{ .Release.Namespace }}/sa/destination-lookup-reader*"
           - "cluster.local/ns/{{ .Release.Namespace }}/sa/destination-lookup-purger*"

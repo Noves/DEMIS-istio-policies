@@ -1,4 +1,4 @@
-{{- if and (eq .Values.dmz.enabled true) (eq .Values.pgbouncer.enabled true) (eq .Values.tcp.principals.enabled true)}}
+{{- if eq .Values.dmz.enabled true }}
 {{/* Allows the Cluster Services to access PgBouncer */}}
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
@@ -15,8 +15,9 @@ spec:
   - from:
     - source:
         principals: [
-            "cluster.local/ns/{{ .Release.Namespace }}/sa/bulk-inbound-service*"
-          ]
+            "cluster.local/ns/{{ .Release.Namespace }}/sa/bulk-inbound-service*",
+            "cluster.local/ns/{{ .Release.Namespace }}/sa/bulk-inbound-purger*"
+        ]
     to:
     - operation:
         # TCP Only

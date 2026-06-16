@@ -1,4 +1,4 @@
-{{- if and (eq .Values.postgres.enabled true) (eq .Values.tcp.principals.enabled true)}}
+{{- if eq .Values.postgres.enabled true}}
 {{/* Allows the Cluster Services to access PostgreSQL */}}
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy

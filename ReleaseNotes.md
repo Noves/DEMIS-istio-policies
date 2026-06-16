@@ -1,6 +1,12 @@
 <img align="right" width="250" height="47" src="https://raw.githubusercontent.com/gematik/gematik.github.io/master/Gematik_Logo_Flag_With_Background.png" /> <br />   
  
 # Release notes Istio-Policies
+## Release 2.12.0
+- removed policies for delegation services because they don't do anything
+- removed feature flag tcp_principals and removed the corresponding policies for pgbouncer, postgres and redis
+- dmz: allow bulk-inbound-purger to access pgbouncer
+- demis: allow ars-purger to access pgbouncer
+
 ## Release 2.11.0
 - added are allow-access for validation service delegation
 - added policies for validation service are to access package registry
